@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    border: solid red 5px;
+    border: solid black 5px;
     font-family: sans-serif;
     max-width: fit-content;
     margin: auto;
@@ -32,7 +32,7 @@ body {
 #playfield {
     /* may want to change this to flexbox */
     max-width: fit-content;
-    border: solid red 5px;
+    border: solid black 5px;
 }
 
 .row {
