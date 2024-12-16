@@ -1,0 +1,70 @@
+body {
+    text-align: center;
+    border: solid red 5px;
+    font-family: sans-serif;
+    /* display: flex; */
+    max-width: fit-content;
+    margin: auto;
+}
+
+#help-topic {
+    display: none;
+    max-width:400px;
+    /* max-height: 0px; */
+}
+
+#header-panel {
+    /* max-width: 500px; */
+    display: flex;
+    justify-content: space-between;
+    border: solid blue 2px;
+}
+
+#flagcount,
+#timer {
+    color: #FF4444;
+    background-color: black;
+    margin: 5px;
+    min-width: 60px;
+}
+
+#smiley {
+    margin: 5px;
+}
+
+#playfield {
+    /* align-self: center; */
+    /* want to change this to flexbox */
+    /* display: grid; */
+    max-width: fit-content;
+    /* grid-template-rows: repeat(8, 1fr); */
+    /* grid-template-columns: repeat(9, 1fr); */
+    border: solid red 5px;
+}
+
+.row {
+    /* border: solid red 2px; */
+    display: flex;
+}
+
+.cell {
+    min-height: 30px;
+    min-width: 30px;
+    padding: 3px;
+    font-weight: bold;
+    /* max-width: 40px; */
+    background-color: #eeeeee;
+    margin: 1px;
+    border-style: outset;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.revealed {
+    background-color: #cccccc;
+    border-style: inset;
+}
+
+/* .revealed must be kept BELOW .cell */
