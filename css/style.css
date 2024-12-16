@@ -2,7 +2,6 @@ body {
     text-align: center;
     border: solid red 5px;
     font-family: sans-serif;
-    /* display: flex; */
     max-width: fit-content;
     margin: auto;
 }
@@ -10,11 +9,9 @@ body {
 #help-topic {
     display: none;
     max-width:400px;
-    /* max-height: 0px; */
 }
 
 #header-panel {
-    /* max-width: 500px; */
     display: flex;
     justify-content: space-between;
     border: solid blue 2px;
@@ -33,17 +30,12 @@ body {
 }
 
 #playfield {
-    /* align-self: center; */
-    /* want to change this to flexbox */
-    /* display: grid; */
+    /* may want to change this to flexbox */
     max-width: fit-content;
-    /* grid-template-rows: repeat(8, 1fr); */
-    /* grid-template-columns: repeat(9, 1fr); */
     border: solid red 5px;
 }
 
 .row {
-    /* border: solid red 2px; */
     display: flex;
 }
 
@@ -52,7 +44,6 @@ body {
     min-width: 30px;
     padding: 3px;
     font-weight: bold;
-    /* max-width: 40px; */
     background-color: #eeeeee;
     margin: 1px;
     border-style: outset;
@@ -63,8 +54,7 @@ body {
 }
 
 .revealed {
+    /* .revealed must be kept BELOW .cell */
     background-color: #cccccc;
     border-style: inset;
 }
-
-/* .revealed must be kept BELOW .cell */
