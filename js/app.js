@@ -474,7 +474,7 @@ cellsEl.forEach((cell) => {
 
 helpButtonEl.addEventListener('click', (event) => {
     if(helpTopicEl.style.display === 'none') {
-        helpTopicEl.style.display='contents';
+        helpTopicEl.style.display='block';
     } else {
         helpTopicEl.style.display='none';
     };
