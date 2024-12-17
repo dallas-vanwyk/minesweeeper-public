@@ -23,10 +23,12 @@ body {
     background-color: black;
     margin: 5px;
     min-width: 60px;
+    font-size:26px;
 }
 
 #smiley {
     margin: 5px;
+    font-size: 30px;
 }
 
 #playfield {
