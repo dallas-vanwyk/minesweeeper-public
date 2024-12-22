@@ -36,6 +36,7 @@ let qtyRevealed;
 let gameState;
 let startTime;
 let intervalID;
+let qMarks = false;
 
 
 
@@ -361,9 +362,12 @@ const rightClick = (y, x) => {
         let currentSpaceEl = document.getElementById(`y${y}x${x}`)
         if (playField[y][x].flag) {
             playField[y][x].flag = false;
-            playField[y][x].question = true;
-            currentSpaceEl.innerText = "?";
+            currentSpaceEl.innerText = "";
             qtyFlags--;
+            if (qMarks) {
+                playField[y][x].question = true;
+                currentSpaceEl.innerText = "?";
+            }
         } else if (playField[y][x].question) {
             playField[y][x].question = false;
             currentSpaceEl.innerText = "";
