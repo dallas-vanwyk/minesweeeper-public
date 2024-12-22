@@ -47,7 +47,6 @@ let qMarks = false;
 const helpButtonEl = document.querySelector("#help");
 
 // options menu
-// to be expanded in future; for now just toggle qmarks
 const optionsButtonEl = document.querySelector('#options')
 
 // help topic paragraph
@@ -95,11 +94,11 @@ const cellsEl = document.querySelectorAll((".cell"));
 
 const incrementTime = () => {
     timer = (Date.now() - startTime) / 1000;
-    if (timer < 10) {
+    if (timer < 9.99) {
         timerEl.innerText = (Math.round(timer * 100) / 100).toFixed(2);
-    } else if (timer < 100) {
+    } else if (timer < 99.9) {
         timerEl.innerText = (Math.round(timer * 10) / 10).toFixed(1);
-    } else if (timer < 1000) {
+    } else if (timer < 999) {
         timerEl.innerText = Math.round(timer);
     } else {
         timerEl.innerText = "999";
@@ -471,6 +470,7 @@ helpButtonEl.addEventListener('click', (event) => {
     };
 });
 
+// to be expanded in future; for now just toggle qmarks
 optionsButtonEl.addEventListener('click', (event) => {
     qMarks = !qMarks;
 });
