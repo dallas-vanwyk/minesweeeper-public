@@ -7,6 +7,16 @@
 
 
 
+/*-------------------- to-do / new feature priority ---------------------*/
+
+// 1 - combo click left-right
+// 2 - implement timer
+
+
+
+
+
+
 /*-------------------- set constants/game settings ----------------------*/
 
 // future, these should be a user input you can change in settings menu or by selecting difficulty level
@@ -24,7 +34,7 @@ let qtyFlags;
 let smiley;
 let qtyRevealed;
 let gameState;
-
+let startTime;
 
 
 
@@ -80,12 +90,21 @@ const cellsEl = document.querySelectorAll((".cell"));
 
 // placeholders for future implementation
 
+const incrementTime = () => {
+    timer = (Date.now() - startTime)/1000;
+
+    timerEl.innerText = (Math.round(timer * 10) / 10).toFixed(1);
+};
+
 const startTimer = () => {
-    // start timer
+    startTime = Date.now();
+    // timerEl.innerText = startTime;
+    timer = setInterval(incrementTime, 10);
 };
 
 const stopTimer = () => {
-    // stop timer
+    clearInterval(timer);
+    clearInterval(incrementTime);
 };
 
 
@@ -365,8 +384,9 @@ const rightClick = (y, x) => {
 
 // new game setup, resetting game characteristics and the play field
 const newGame = () => {
-    timer = 0.0;
+    timer = 0;
     qtyFlags = 0;
+    timerEl.innerText = timer;
     smiley = 0;
     qtyRevealed = 0;
     smileyEl.innerText = '🙂';
