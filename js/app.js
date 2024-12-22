@@ -46,6 +46,10 @@ let qMarks = false;
 // help button
 const helpButtonEl = document.querySelector("#help");
 
+// options menu
+// to be expanded in future; for now just toggle qmarks
+const optionsButtonEl = document.querySelector('#options')
+
 // help topic paragraph
 const helpTopicEl = document.querySelector("#help-topic");
 
@@ -358,7 +362,7 @@ const doubleClick = (y, x) => {
 
 // right click which toggles flags and question marks
 const rightClick = (y, x) => {
-    if (!playField[y][x].revealed) {
+    if (!playField[y][x].revealed && gameState != 2) {
         let currentSpaceEl = document.getElementById(`y${y}x${x}`)
         if (playField[y][x].flag) {
             playField[y][x].flag = false;
@@ -464,6 +468,13 @@ helpButtonEl.addEventListener('click', (event) => {
     };
 });
 
+optionsButtonEl.addEventListener('click', (event) => {
+    if (qMarks) {
+        qMarks = false;
+    } else {
+        qMarks = true;
+    }
+})
 
 
 /*---------------------- actions on page load ---------------------------*/
