@@ -469,12 +469,8 @@ helpButtonEl.addEventListener('click', (event) => {
 });
 
 optionsButtonEl.addEventListener('click', (event) => {
-    if (qMarks) {
-        qMarks = false;
-    } else {
-        qMarks = true;
-    }
-})
+    qMarks = !qMarks;
+});
 
 
 /*---------------------- actions on page load ---------------------------*/
