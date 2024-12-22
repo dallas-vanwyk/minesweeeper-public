@@ -23,7 +23,7 @@
 const qtyRows = 9;
 const qtyCols = 9;
 const qtyMines = 10;
-
+// const playField = [];
 
 
 /*--------------------- initialize game variables -----------------------*/
@@ -89,7 +89,7 @@ const cellsEl = document.querySelectorAll((".cell"));
 /*-------------------------- timer functions ----------------------------*/
 
 const incrementTime = () => {
-    timer = (Date.now() - startTime)/1000;
+    timer = (Date.now() - startTime) / 1000;
     timerEl.innerText = (Math.round(timer * 10) / 10).toFixed(1);
 };
 
@@ -113,6 +113,9 @@ for (let y = 0; y < qtyRows; y++) {
     playField[y] = new Array(qtyCols);
 }
 
+// playField.forEach((row) => {
+//     row = new Array(qtyCols);
+// });
 
 
 
@@ -337,19 +340,19 @@ const clickAllAdjacent = (y, x) => {
 };
 
 const doubleClick = (y, x) => {
-
-    let adjFlags = 0;
-    for (let yp = y - 1; yp <= y + 1; yp++) {
-        for (let xp = x - 1; xp <= x + 1; xp++) {
-            if (xp >= 0 && xp < qtyCols && yp >= 0 && yp < qtyCols) {
-                if (playField[yp][xp].flag || playField[yp][xp].question) adjFlags++;
+    if (!playField[y][x].flag && !playField[y][x].question) {
+        let adjFlags = 0;
+        for (let yp = y - 1; yp <= y + 1; yp++) {
+            for (let xp = x - 1; xp <= x + 1; xp++) {
+                if (xp >= 0 && xp < qtyCols && yp >= 0 && yp < qtyCols) {
+                    if (playField[yp][xp].flag || playField[yp][xp].question) adjFlags++;
+                }
             }
         }
+        if (adjFlags >= playField[y][x].adjacent) {
+            clickAllAdjacent(y, x);
+        };
     }
-
-    if (adjFlags >= playField[y][x].adjacent) {
-        clickAllAdjacent(y, x);
-    };
 };
 
 // right click which toggles flags and question marks
@@ -389,6 +392,7 @@ const newGame = () => {
     gameState = 0;
     flagCountEl.innerText = qtyMines - qtyFlags;
     displayMessageEl.innerText = 'Click the spaces to clear the field';
+    stopTimer();
 }
 
 const gameWon = () => {
@@ -449,10 +453,10 @@ cellsEl.forEach((cell) => {
 
 
 helpButtonEl.addEventListener('click', (event) => {
-    if(helpTopicEl.style.display === 'none') {
-        helpTopicEl.style.display='block';
+    if (helpTopicEl.style.display === 'none') {
+        helpTopicEl.style.display = 'block';
     } else {
-        helpTopicEl.style.display='none';
+        helpTopicEl.style.display = 'none';
     };
 });
 
