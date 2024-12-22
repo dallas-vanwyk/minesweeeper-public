@@ -35,7 +35,7 @@ let smiley;
 let qtyRevealed;
 let gameState;
 let startTime;
-
+let intervalID;
 
 
 
@@ -88,23 +88,18 @@ const cellsEl = document.querySelectorAll((".cell"));
 
 /*-------------------------- timer functions ----------------------------*/
 
-// placeholders for future implementation
-
 const incrementTime = () => {
     timer = (Date.now() - startTime)/1000;
-
     timerEl.innerText = (Math.round(timer * 10) / 10).toFixed(1);
 };
 
 const startTimer = () => {
     startTime = Date.now();
-    // timerEl.innerText = startTime;
-    timer = setInterval(incrementTime, 10);
+    intervalID = setInterval(incrementTime, 10);
 };
 
 const stopTimer = () => {
-    clearInterval(timer);
-    clearInterval(incrementTime);
+    clearInterval(intervalID);
 };
 
 
