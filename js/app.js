@@ -451,12 +451,17 @@ cellsEl.forEach((cell) => {
     // double click
     cell.addEventListener('dblclick', (event) => {
         doubleClick(+event.target.getAttribute('data-row'), +event.target.getAttribute('data-col'));
+        // console.log(event);
     });
 
     // right click
     cell.addEventListener('contextmenu', (event) => {
         event.preventDefault();
-        rightClick(+event.target.getAttribute('data-row'), +event.target.getAttribute('data-col'));
+        if (event.buttons === 3) { // for a combo click
+            doubleClick(+event.target.getAttribute('data-row'), +event.target.getAttribute('data-col'));
+        } else { // for a regular right click
+            rightClick(+event.target.getAttribute('data-row'), +event.target.getAttribute('data-col'));
+        }
         return false;
     });
 
