@@ -442,30 +442,18 @@ cellsEl.forEach((cell) => {
 
     // left click
     cell.addEventListener('click', (event) => {
-        let clickRow = event.target.getAttribute('data-row');
-        clickRow = Number(clickRow);
-        let clickCol = event.target.getAttribute('data-col');
-        clickCol = Number(clickCol);
-        leftClick(clickRow, clickCol);
+        leftClick(+event.target.getAttribute('data-row'), +event.target.getAttribute('data-col'));
     });
 
     // double click
     cell.addEventListener('dblclick', (event) => {
-        let clickRow = event.target.getAttribute('data-row');
-        clickRow = Number(clickRow);
-        let clickCol = event.target.getAttribute('data-col');
-        clickCol = Number(clickCol);
-        doubleClick(clickRow, clickCol);
+        doubleClick(+event.target.getAttribute('data-row'), +event.target.getAttribute('data-col'));
     });
 
     // right click
     cell.addEventListener('contextmenu', (event) => {
         event.preventDefault();
-        let clickRow = event.target.getAttribute('data-row');
-        clickRow = Number(clickRow);
-        let clickCol = event.target.getAttribute('data-col');
-        clickCol = Number(clickCol);
-        rightClick(clickRow, clickCol);
+        rightClick(+event.target.getAttribute('data-row'), +event.target.getAttribute('data-col'));
         return false;
     });
 
