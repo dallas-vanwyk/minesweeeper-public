@@ -162,33 +162,6 @@ const resetField = () => {
 
 
 
-/*--------------------- what to show on a space -------------------------*/
-
-// logic tree for what to display on each space, WHILE the game is pre-play or in play (not a lost game)
-const spaceDisplay = (y, x) => {
-    let currentSpace = playField[y][x];
-    let display = "";
-    if (currentSpace.revealed) {
-        if (currentSpace.adjacent === 0) {
-            display = "";
-        } else {
-            display = currentSpace.adjacent.toString();
-        }
-    } else {
-        if (currentSpace.flag) {
-            display = "🚩";
-        } else if (currentSpace.question) {
-            display = "?";
-        } else {
-            display = "";
-        }
-    }
-    return display;
-}
-
-
-
-
 
 
 
@@ -318,18 +291,19 @@ const leftClick = (y, x) => {
             // if it's a number space
             playField[y][x].revealed = true;
             currentSpaceEl.classList.add('revealed');
-            currentSpaceEl.innerText = spaceDisplay(y, x);
+            currentSpaceEl.innerText = currentSpace.adjacent;
             qtyRevealed++;
 
             if (currentSpace.adjacent === 0) {
-                // if no adjacent mines, iterate through adjacent spaces
+                // if no adjacent mines
+                currentSpaceEl.innerText = ""; // overwrites the zeros
+                // iterate through adjacent spaces
                 clickAllAdjacent(y, x);
             }
         }
 
         // if all non-mine spaces have been revealed
         if (qtyRevealed === (qtyCols * qtyRows) - qtyMines) {
-            // trigger game won function
             gameWon();
         }
     }
@@ -366,7 +340,7 @@ const doubleClick = (y, x) => {
 
 // right click which toggles flags and question marks
 const rightClick = (y, x) => {
-    if (playField[y][x].revealed === false) {
+    if (!playField[y][x].revealed) {
         let currentSpaceEl = document.getElementById(`y${y}x${x}`)
         if (playField[y][x].flag) {
             playField[y][x].flag = false;
@@ -436,8 +410,7 @@ smileyEl.addEventListener('click', (event) => {
 
 
 // event listener for cells
-// This may not need the forEach method since it uses the data-row and data-col attributes
-// could also be cleaned up by DRY clickRow and clickCol
+// Is there another way that doens't use the forEach method?
 cellsEl.forEach((cell) => {
 
     // left click
@@ -558,6 +531,31 @@ newGame();
 //finish this later
 // const getRandomSpace = () => {
 // }
+
+
+
+// logic tree for what to display on each space, WHILE the game is pre-play or in play (not a lost game)
+// const spaceDisplay = (y, x) => {
+//     let currentSpace = playField[y][x];
+//     let display = "";
+//     if (currentSpace.revealed) {
+//         if (currentSpace.adjacent === 0) {
+//             display = "";
+//         } else {
+//             display = currentSpace.adjacent.toString();
+//         }
+//     } else {
+//         if (currentSpace.flag) {
+//             display = "🚩";
+//         } else if (currentSpace.question) {
+//             display = "?";
+//         } else {
+//             display = "";
+//         }
+//     }
+//     return display;
+// }
+
 
 
 /*-----------------------------------------------------------------------*/
