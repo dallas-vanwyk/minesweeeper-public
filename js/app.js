@@ -95,7 +95,16 @@ const cellsEl = document.querySelectorAll((".cell"));
 
 const incrementTime = () => {
     timer = (Date.now() - startTime) / 1000;
-    timerEl.innerText = (Math.round(timer * 10) / 10).toFixed(1);
+    if (timer < 10) {
+        timerEl.innerText = (Math.round(timer * 100) / 100).toFixed(2);
+    } else if (timer < 100) {
+        timerEl.innerText = (Math.round(timer * 10) / 10).toFixed(1);
+    } else if (timer < 1000) {
+        timerEl.innerText = Math.round(timer);
+    } else {
+        timerEl.innerText = "999";
+        stopTimer();
+    }
 };
 
 const startTimer = () => {
@@ -112,16 +121,11 @@ const stopTimer = () => {
 /*-------------------- initialize empty play field ----------------------*/
 
 // initial means of initializing empty play field using a FOR loop
-// could be updated to forEach
-const playField = new Array(qtyRows);
+// could be updated to forEach?
+const playField = Array(qtyRows);
 for (let y = 0; y < qtyRows; y++) {
-    playField[y] = new Array(qtyCols);
+    playField[y] = Array(qtyCols);
 }
-
-// playField.forEach((row) => {
-//     row = new Array(qtyCols);
-// });
-
 
 
 
@@ -368,6 +372,7 @@ const rightClick = (y, x) => {
             playField[y][x].flag = false;
             currentSpaceEl.innerText = "";
             qtyFlags--;
+            // only adds question mark if option is toggled on
             if (qMarks) {
                 playField[y][x].question = true;
                 currentSpaceEl.innerText = "?";
@@ -435,7 +440,6 @@ smileyEl.addEventListener('click', (event) => {
     newGame();
 })
 
-
 // event listener for cells
 // Is there another way that doens't use the forEach method?
 cellsEl.forEach((cell) => {
@@ -458,7 +462,6 @@ cellsEl.forEach((cell) => {
     });
 
 });
-
 
 helpButtonEl.addEventListener('click', (event) => {
     if (helpTopicEl.style.display === 'none') {
