@@ -9,8 +9,9 @@
 
 /*-------------------- to-do / new feature priority ---------------------*/
 
-// 1 - combo click left-right
-// 2 - implement timer
+// high score tracking
+// better help menu
+// better options menu
 
 
 
@@ -23,7 +24,6 @@
 const qtyRows = 9;
 const qtyCols = 9;
 const qtyMines = 10;
-// const playField = [];
 
 
 /*--------------------- initialize game variables -----------------------*/
