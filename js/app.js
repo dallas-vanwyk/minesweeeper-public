@@ -435,9 +435,7 @@ const gameLost = (y, x) => {
 
 /*------------------------- event listeners -----------------------------*/
 
-smileyEl.addEventListener('click', (event) => {
-    newGame();
-})
+smileyEl.addEventListener('click', newGame);
 
 // event listener for cells
 // Is there another way that doens't use the forEach method?
